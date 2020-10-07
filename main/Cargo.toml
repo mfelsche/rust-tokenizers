@@ -1,41 +1,41 @@
 [package]
-name = "rust_tokenizers"
-version = "5.0.1"
 authors = ["Guillaume Becquin <guillaume.becquin@gmail.com>"]
-edition = "2018"
-description = "High performance tokenizers for Rust"
-repository = "https://github.com/guillaume-be/rust-tokenizers"
-license = "Apache-2.0"
-readme = "README.md"
 build = "build.rs"
+description = "High performance tokenizers for Rust"
+edition = "2018"
+license = "Apache-2.0"
+name = "rust_tokenizers"
+readme = "README.md"
+repository = "https://github.com/guillaume-be/rust-tokenizers"
+version = "5.0.1"
 
 [dependencies]
 csv = "1.1"
-unicode-normalization = "0.1.8"
-rayon = "1.2.1"
-lazy_static = "1.4.0"
+hashbrown = "0.7.2"
 itertools = "0.8.2"
+lazy_static = "1.4.0"
+protobuf = "= 2.17.0"
+rayon = "1.2.1"
+regex = "1.3.1"
 serde = {version = "1.0.106", features = ["derive"]}
 serde_json = "1.0.44"
-regex = "1.3.1"
-protobuf = "= 2.14.0"
-hashbrown = "0.7.2"
-unicode-normalization-alignments = "0.1.12"
 thiserror = "1.0.20"
+unicode-normalization = "0.1.8"
+unicode-normalization-alignments = "0.1.12"
 
 [dev-dependencies]
-tempfile = "3.1.0"
+anyhow = "1.0.32"
 dirs = "2.0.0"
 reqwest = {version = "0.10.4", features = ["blocking"]}
-anyhow = "1.0.32"
+tempfile = "3.1.0"
 
 [build-dependencies]
 protobuf-codegen-pure = {version = "2.8.1", optional = true}
 
 [features]
-proto-compile = [ "protobuf-codegen-pure" ]
+proto-compile = ["protobuf-codegen-pure"]
 
 [lib]
+crate-type = ["lib"]
 name = "rust_tokenizers"
 path = "src/lib.rs"
-crate-type = ["lib"]

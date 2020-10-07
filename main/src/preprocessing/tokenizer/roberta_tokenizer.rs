@@ -8,7 +8,7 @@
 //     http://www.apache.org/licenses/LICENSE-2.0
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
@@ -30,11 +30,11 @@ use regex::Regex;
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::iter::Iterator;
-use std::rc::Rc;
+use std::sync::Arc;
 
 pub struct RobertaTokenizer {
-    vocab: Rc<RobertaVocab>,
-    bpe_ranks: Rc<BpePairVocab>,
+    vocab: Arc<RobertaVocab>,
+    bpe_ranks: Arc<BpePairVocab>,
     cache: RefCell<HashMap<String, (Vec<String>, Vec<usize>)>>,
     pattern_lookahead: Regex,
     pattern_tokenization: Regex,
@@ -49,8 +49,8 @@ impl RobertaTokenizer {
         lower_case: bool,
         add_prefix_space: bool,
     ) -> Result<RobertaTokenizer, TokenizerError> {
-        let vocab = Rc::new(RobertaVocab::from_file(vocab_path)?);
-        let bpe_ranks = Rc::new(BpePairVocab::from_file(merges_path)?);
+        let vocab = Arc::new(RobertaVocab::from_file(vocab_path)?);
+        let bpe_ranks = Arc::new(BpePairVocab::from_file(merges_path)?);
         let cache = RefCell::new(HashMap::new());
         let pattern_lookahead = Regex::new(r"\s+\S").unwrap();
         let pattern_tokenization =
@@ -68,8 +68,8 @@ impl RobertaTokenizer {
     }
 
     pub fn from_existing_vocab_and_merges(
-        vocab: Rc<RobertaVocab>,
-        merges: Rc<BpePairVocab>,
+        vocab: Arc<RobertaVocab>,
+        merges: Arc<BpePairVocab>,
         lower_case: bool,
         add_prefix_space: bool,
     ) -> RobertaTokenizer {
@@ -304,8 +304,8 @@ mod tests {
     #[test]
     fn test_roberta_tokenizer() {
         //        Given
-        let vocab = Rc::new(generate_test_vocab());
-        let merges = Rc::new(generate_test_merges());
+        let vocab = Arc::new(generate_test_vocab());
+        let merges = Arc::new(generate_test_merges());
         let roberta_tokenizer: RobertaTokenizer =
             RobertaTokenizer::from_existing_vocab_and_merges(vocab, merges, true, false);
         let test_tuples = [
@@ -362,8 +362,8 @@ mod tests {
     #[test]
     fn test_roberta_tokenizer_no_lower_casing() {
         //        Given
-        let vocab = Rc::new(generate_test_vocab());
-        let merges = Rc::new(generate_test_merges());
+        let vocab = Arc::new(generate_test_vocab());
+        let merges = Arc::new(generate_test_merges());
         let roberta_tokenizer: RobertaTokenizer =
             RobertaTokenizer::from_existing_vocab_and_merges(vocab, merges, false, true);
         let test_tuples = [
@@ -449,8 +449,8 @@ mod tests {
     #[test]
     fn test_encode() {
         //        Given
-        let vocab = Rc::new(generate_test_vocab());
-        let merges = Rc::new(generate_test_merges());
+        let vocab = Arc::new(generate_test_vocab());
+        let merges = Arc::new(generate_test_merges());
         let roberta_tokenizer: RobertaTokenizer =
             RobertaTokenizer::from_existing_vocab_and_merges(vocab, merges, true, true);
         let truncation_strategy = TruncationStrategy::LongestFirst;
@@ -547,8 +547,8 @@ mod tests {
     #[test]
     fn test_decode() {
         //        Given
-        let vocab = Rc::new(generate_test_vocab());
-        let merges = Rc::new(generate_test_merges());
+        let vocab = Arc::new(generate_test_vocab());
+        let merges = Arc::new(generate_test_merges());
         let roberta_tokenizer: RobertaTokenizer =
             RobertaTokenizer::from_existing_vocab_and_merges(vocab, merges, true, true);
         let skip_special_tokens = false;

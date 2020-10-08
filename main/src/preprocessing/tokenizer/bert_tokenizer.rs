@@ -21,6 +21,7 @@ use crate::preprocessing::vocab::base_vocab::Vocab;
 use crate::BertVocab;
 use std::sync::Arc;
 
+#[derive(Debug)]
 pub struct BertTokenizer {
     vocab: Arc<BertVocab>,
     base_tokenizer: BaseTokenizer<BertVocab>,

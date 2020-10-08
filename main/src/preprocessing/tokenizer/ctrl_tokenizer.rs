@@ -25,6 +25,7 @@ use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
 
+#[derive(Debug)]
 pub struct CtrlTokenizer {
     vocab: Rc<OpenAiGptVocab>,
     bpe_ranks: Rc<BpePairVocab>,

@@ -17,6 +17,7 @@ use crate::preprocessing::vocab::sentence_piece_vocab::{SentencePieceModel, Sent
 use crate::tokenization_utils::{decompose_nfkc, is_whitespace};
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab};
 
+#[derive(Debug)]
 pub struct SentencePieceTokenizer {
     model: SentencePieceModel,
     vocab: SentencePieceVocab,

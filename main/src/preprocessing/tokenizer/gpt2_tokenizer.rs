@@ -29,6 +29,7 @@ use std::collections::HashMap;
 use std::iter::Iterator;
 use std::rc::Rc;
 
+#[derive(Debug)]
 pub struct Gpt2Tokenizer {
     vocab: Rc<Gpt2Vocab>,
     bpe_ranks: Rc<BpePairVocab>,

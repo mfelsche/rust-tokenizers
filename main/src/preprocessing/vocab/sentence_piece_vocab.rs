@@ -57,6 +57,7 @@ impl TrieNode {
     }
 }
 
+#[derive(Debug)]
 pub struct SentencePieceModel {
     pub root: TrieNode,
 }
@@ -271,6 +272,7 @@ impl SentencePieceModel {
     }
 }
 
+#[derive(Debug)]
 pub struct SentencePieceVocab {
     pub values: HashMap<String, i64>,
     pub indices: HashMap<i64, String>,

@@ -15,6 +15,7 @@ use crate::preprocessing::error::TokenizerError;
 use crate::preprocessing::vocab::base_vocab::{swap_key_values, Vocab};
 use std::collections::HashMap;
 
+#[derive(Debug)]
 pub struct BertVocab {
     ///A mapping of tokens as string to indices (i.e. the encoder base)
     pub values: HashMap<String, i64>,

@@ -20,6 +20,7 @@ use crate::tokenization_utils::{
 };
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab};
 
+#[derive(Debug)]
 pub struct AlbertTokenizer {
     model: SentencePieceModel,
     vocab: AlbertVocab,

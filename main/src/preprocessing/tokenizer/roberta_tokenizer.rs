@@ -32,6 +32,7 @@ use std::collections::HashMap;
 use std::iter::Iterator;
 use std::sync::Arc;
 
+#[derive(Debug)]
 pub struct RobertaTokenizer {
     vocab: Arc<RobertaVocab>,
     bpe_ranks: Arc<BpePairVocab>,

@@ -24,7 +24,7 @@ pub fn swap_key_values<T: Clone, U: Hash + Eq + Copy>(
         .collect()
 }
 
-pub trait Vocab {
+pub trait Vocab: std::fmt::Debug {
     ///Associative function returning the unknown value
     fn unknown_value() -> &'static str;
 
@@ -129,6 +129,7 @@ pub trait Vocab {
     }
 }
 
+#[derive(Debug)]
 pub struct BaseVocab {
     ///A mapping of tokens as string to indices (i.e. the encoder base)
     pub values: HashMap<String, i64>,

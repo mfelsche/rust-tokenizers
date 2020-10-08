@@ -21,6 +21,7 @@ use crate::tokenization_utils::{
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab};
 use regex::Regex;
 
+#[derive(Debug)]
 pub struct MarianTokenizer {
     model: SentencePieceModel,
     vocab: MarianVocab,

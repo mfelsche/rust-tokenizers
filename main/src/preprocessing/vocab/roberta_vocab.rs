@@ -17,6 +17,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufReader;
 
+#[derive(Debug)]
 pub struct RobertaVocab {
     ///A mapping of tokens as string to indices (i.e. the encoder base)
     pub values: HashMap<String, i64>,

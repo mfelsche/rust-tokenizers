@@ -19,6 +19,7 @@ use crate::tokenization_utils::{
 };
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab};
 
+#[derive(Debug)]
 pub struct T5Tokenizer {
     model: SentencePieceModel,
     vocab: T5Vocab,

@@ -20,6 +20,7 @@ use crate::tokenization_utils::{
 };
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab};
 
+#[derive(Debug)]
 pub struct XLNetTokenizer {
     model: SentencePieceModel,
     vocab: XLNetVocab,

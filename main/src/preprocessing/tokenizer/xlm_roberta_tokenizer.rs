@@ -18,6 +18,7 @@ use crate::tokenization_utils::{
 };
 use crate::{MultiThreadedTokenizer, Tokenizer, Vocab, XLMRobertaVocab};
 
+#[derive(Debug)]
 pub struct XLMRobertaTokenizer {
     model: SentencePieceModel,
     vocab: XLMRobertaVocab,

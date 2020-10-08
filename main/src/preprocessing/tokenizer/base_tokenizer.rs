@@ -24,6 +24,7 @@ use rayon::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 
+#[derive(Debug)]
 pub enum TruncationStrategy {
     LongestFirst,
     OnlyFirst,
@@ -743,6 +744,7 @@ where
     }
 }
 
+#[derive(Debug)]
 pub struct BaseTokenizer<T: Vocab> {
     vocab: Arc<T>,
     lower_case: bool,

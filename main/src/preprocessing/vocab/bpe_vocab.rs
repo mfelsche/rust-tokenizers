@@ -23,6 +23,7 @@ pub struct BpePairRef<'a> {
     pub byte_2: &'a String,
 }
 
+#[derive(Debug)]
 pub struct BpePairVocab {
     pub values: HashMap<(String, String), i64>,
 }
